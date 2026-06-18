@@ -72,7 +72,7 @@ export default function HomeDashboard() {
         {/* Full Width Background Video */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <iframe 
-            src={`https://www.youtube.com/embed/${heroVideoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${heroVideoId}&modestbranding=1&playsinline=1`}
+            src={`https://www.youtube.com/embed/${heroVideoId}?autoplay=1&mute=1&loop=1&playlist=${heroVideoId}&playsinline=1&enablejsapi=1`}
             className="absolute inset-0 w-full h-[150%] -top-[25%] opacity-70 scale-125"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           />
