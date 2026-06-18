@@ -10,7 +10,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-fast-black font-sans text-fast-text">
       <main className="flex flex-1 flex-col items-center justify-center p-8 text-center">
         <h1 className="mb-4 text-5xl font-bold tracking-tight text-fast-red">
-          FASTTV
+          FlickDot
         </h1>
         <p className="mb-8 max-w-2xl text-lg text-fast-text-secondary">
           Welcome to the future of streaming. The premium OTT platform designed for global audiences.

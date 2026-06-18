@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "FASTTV | Premium OTT Platform",
+  title: "FlickDot | Premium OTT Platform",
   description: "Next-generation streaming ecosystem ready for global audiences.",
 };
 
