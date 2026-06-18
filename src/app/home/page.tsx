@@ -11,7 +11,7 @@ import { LatestNews } from "@/components/home/LatestNews";
 import { Footer } from "@/components/layout/Footer";
 
 // Normal Video IDs scraped from @flickdotstudio
-const heroVideoId = "L7aRxqziN8w"; 
+const heroVideoId = "Uz4Qa37LEKk"; 
 const flickdotVideos = [
   "Uz4Qa37LEKk", "GX1vz0T-dIE", "j20LIzXytJ4", "OBAeyeYSjFQ", "LtOwx_tqJsw", "AvqXCOoCbhw", "XUoYZ5NtKvU", "DgTIKX1CX_g", "WvWD5SugQko", "sL3Pn-Ej5dY", "M2G2soaLPu8", "865eMrWxhTw", "29-CXj5peNM", "m3OvTVPoLUk", "pM_fZtqlks8", "6mBtt8anFh4", "gbb8irtXXv0", "YDtMNjmKjZ4", "0PMFiY3zf9c", "qqX6WUxLMzo", "vad_E5qZXlU", "OIJz6WIvwiw", "tOMUUTf4Rks", "Gc0f6a8ZHQo", "JoFS0bvIXlU", "bAG9roUmlUs", "IGpCJpjIPOs", "Bt46ajXQN-w", "es6ahdjbKxU", "Fz-vuHgHOxM", "fQYnv5PDi78", "Jee5zxUbQr0", "kTmj696cmiM", "yCJIE74w79E", "BY6PAUWj0uY", "dPycSyX7xww", "QUIZSF2BOI0", "wmkuxE1KcAU", "4ZUKk8ZHQWQ", "KErd9s_Cr1I", "BT7IZee-aD8", "JQ621T_PN0s", "L7aRxqziN8w", "xGL5xy_YFyw", "U07SsCE6ZJA", "MR72FmMVffk", "C-a0jpFHizc", "ESJcH-bSONQ"
 ];
