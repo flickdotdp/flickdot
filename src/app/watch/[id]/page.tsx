@@ -70,7 +70,7 @@ export default function WatchPage({ params }: { params: { id: string } }) {
                 unoptimized 
               />
               <iframe 
-                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1&enablejsapi=1`}
+                src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1&enablejsapi=1`}
                 className="absolute inset-0 w-full h-full pointer-events-auto z-10"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
