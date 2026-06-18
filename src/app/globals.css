@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
+@theme {
+  --color-background: #0E0E0E;
+  --color-foreground: #FFFFFF;
+
+  --color-fast-black: #0E0E0E;
+  --color-fast-dark: #141416;
+  --color-fast-surface: #1E1E24;
+  --color-fast-red: #cc0000;
+  --color-fast-red-hover: #e60000;
+  --color-fast-text: #FFFFFF;
+  --color-fast-text-secondary: #9CA3AF;
+  --color-fast-success: #00D084;
+  --color-fast-warning: #FFB800;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #0A0A0A;
+  --foreground: #FFFFFF;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide scrollbar globally for a clean app-like experience */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
