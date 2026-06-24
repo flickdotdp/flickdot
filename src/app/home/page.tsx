@@ -89,9 +89,9 @@ export default function HomeDashboard() {
                       <span>TOP</span><span>10</span>
                     </div>
                   )}
-                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10">
-                    <div className="bg-fast-red text-white text-[10px] font-bold px-2 py-0.5 rounded-sm shadow-md whitespace-nowrap">
-                      {i % 2 === 0 ? "Ajout récent" : "Nouvelle saison"}
+                  <div className="absolute bottom-2 left-2 z-10">
+                    <div className="bg-[#E50914] text-white text-[9px] font-black px-2 py-0.5 rounded-sm shadow-lg whitespace-nowrap tracking-wider uppercase border border-red-500/50">
+                      {i % 2 === 0 ? "Recently Added" : "New Episodes"}
                     </div>
                   </div>
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
