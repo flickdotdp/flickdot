@@ -1,24 +1,41 @@
-import { ArrowLeft, Play, Maximize, SkipBack, SkipForward, Volume2, Subtitles, Layers, Cast, ShoppingBag, Search } from "lucide-react";
+import { ArrowLeft, X, Play, SkipBack, SkipForward, Volume2, Subtitles, Layers, Cast, ShoppingBag, Search } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { YouTubePlayer } from "@/components/ui/YouTubePlayer";
+import { FullscreenButton } from "@/components/ui/FullscreenButton";
+import { extractYouTubeId } from "@/lib/utils";
 
-export default function WatchPage({ params }: { params: { id: string } }) {
-  const videoId = params.id;
+export default async function WatchPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  const rawVideoId = resolvedParams.id;
+  const videoId = extractYouTubeId(rawVideoId);
 
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a0a0a] font-sans">
       
-      {/* Background Ambient Blur (Lens Blur Environment) */}
-      <div className="absolute inset-0 z-0">
-        <Image 
-          src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
-          alt="Ambient Environment"
-          fill
-          className="object-cover opacity-90 blur-[16px] scale-110"
-          unoptimized
-        />
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
+      {/* Background Netflix Standard */}
+      <div className="absolute inset-0 z-0 bg-[#0a0a0a]">
+        <div className="absolute top-0 left-0 w-full h-[80vh]">
+          <Image 
+            src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
+            alt="Netflix Standard Background"
+            fill
+            className="object-cover opacity-60"
+            unoptimized
+          />
+          {/* Netflix Signature Gradients */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-[#0a0a0a]/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-l from-[#0a0a0a]/80 via-transparent to-transparent" />
+        </div>
       </div>
+
+      {/* Floating Close Button */}
+      <Link href="/home" className="absolute top-8 right-8 z-50">
+        <div className="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/20 rounded-full cursor-pointer transition-all hover:scale-110 group">
+          <X className="w-6 h-6 text-white/80 group-hover:text-white" />
+        </div>
+      </Link>
 
       {/* Main Container */}
       <div className="relative z-10 w-full max-w-[90rem] mx-auto flex flex-col md:flex-row items-center justify-center gap-8 px-8 py-12">
@@ -42,10 +59,10 @@ export default function WatchPage({ params }: { params: { id: string } }) {
            </div>
         </div>
 
-        {/* Center Main Player Window */}
-        <div className="flex-1 w-full flex flex-col items-center gap-8">
+        {/* Center Main Player Window (Acting as the Theatre Screen) */}
+        <div className="flex-1 w-full flex flex-col items-center gap-8 z-20">
           
-          <div className="relative w-full max-w-5xl aspect-video bg-black/60 backdrop-blur-3xl rounded-[2rem] border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col group">
+          <div id="player-container" className="relative w-full max-w-5xl md:max-w-6xl aspect-video bg-black shadow-[0_0_150px_rgba(255,255,255,0.15)] overflow-hidden flex flex-col group transition-all duration-700">
             
             {/* Top Bar (Auto-hides in reality, but we keep it slightly visible) */}
             <div className="flex items-center justify-between px-6 py-5 absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -55,9 +72,7 @@ export default function WatchPage({ params }: { params: { id: string } }) {
                 </div>
               </Link>
               <h2 className="text-white/90 font-medium tracking-wide text-sm md:text-base shadow-sm">Flickdot Presentation</h2>
-              <div className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 cursor-pointer backdrop-blur-md transition-colors">
-                <Maximize className="w-4 h-4 text-white" />
-              </div>
+              <FullscreenButton targetId="player-container" />
             </div>
 
             {/* Video Iframe */}
@@ -69,11 +84,11 @@ export default function WatchPage({ params }: { params: { id: string } }) {
                 className="object-cover absolute inset-0 z-0 opacity-50" 
                 unoptimized 
               />
-              <iframe 
-                src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1&enablejsapi=1`}
-                className="absolute inset-0 w-full h-full pointer-events-auto z-10"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+              <YouTubePlayer 
+                videoId={videoId} 
+                autoplay={true} 
+                controls={true}
+                className="absolute inset-0 w-full h-full z-10"
               />
               
               {/* Custom Progress Bar Overlay */}
@@ -114,7 +129,7 @@ export default function WatchPage({ params }: { params: { id: string } }) {
              { id: "OBAeyeYSjFQ", title: "Visual Effects Breakdown" },
              { id: "LtOwx_tqJsw", title: "Official Trailer" }
            ].map((vid, i) => (
-             <div key={i} className="flex flex-col gap-2 group cursor-pointer">
+             <Link key={i} href={`/watch/${vid.id}`} className="flex flex-col gap-2 group cursor-pointer">
                <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-white/10 group-hover:border-white/30 transition-colors shadow-lg">
                  <Image src={`https://i.ytimg.com/vi/${vid.id}/mqdefault.jpg`} alt="Related" fill className="object-cover group-hover:scale-105 transition-transform" unoptimized />
                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
@@ -124,7 +139,7 @@ export default function WatchPage({ params }: { params: { id: string } }) {
                  <h4 className="text-white/90 text-sm font-medium line-clamp-1 group-hover:text-white">{vid.title}</h4>
                  <p className="text-white/50 text-xs mt-0.5">Flickdot Studio</p>
                </div>
-             </div>
+             </Link>
            ))}
         </div>
 

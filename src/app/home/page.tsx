@@ -2,16 +2,17 @@ import { Button } from "@/components/ui/button";
 import { Play, Info, ListVideo, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { YouTubePlayer } from "@/components/ui/YouTubePlayer";
 import { Navbar } from "@/components/layout/Navbar";
 import { VideoRow } from "@/components/home/VideoRow";
 import { CatalogSection } from "@/components/home/CatalogSection";
 import { SoonOnSite } from "@/components/home/SoonOnSite";
 import { SubscribeBanner } from "@/components/home/SubscribeBanner";
 import { LatestNews } from "@/components/home/LatestNews";
+import { HeroBannerRotator } from "@/components/home/HeroBannerRotator";
 import { Footer } from "@/components/layout/Footer";
 
 // Normal Video IDs scraped from @flickdotstudio
-const heroVideoId = "Uz4Qa37LEKk"; 
 const flickdotVideos = [
   "Uz4Qa37LEKk", "GX1vz0T-dIE", "j20LIzXytJ4", "OBAeyeYSjFQ", "LtOwx_tqJsw", "AvqXCOoCbhw", "XUoYZ5NtKvU", "DgTIKX1CX_g", "WvWD5SugQko", "sL3Pn-Ej5dY", "M2G2soaLPu8", "865eMrWxhTw", "29-CXj5peNM", "m3OvTVPoLUk", "pM_fZtqlks8", "6mBtt8anFh4", "gbb8irtXXv0", "YDtMNjmKjZ4", "0PMFiY3zf9c", "qqX6WUxLMzo", "vad_E5qZXlU", "OIJz6WIvwiw", "tOMUUTf4Rks", "Gc0f6a8ZHQo", "JoFS0bvIXlU", "bAG9roUmlUs", "IGpCJpjIPOs", "Bt46ajXQN-w", "es6ahdjbKxU", "Fz-vuHgHOxM", "fQYnv5PDi78", "Jee5zxUbQr0", "kTmj696cmiM", "yCJIE74w79E", "BY6PAUWj0uY", "dPycSyX7xww", "QUIZSF2BOI0", "wmkuxE1KcAU", "4ZUKk8ZHQWQ", "KErd9s_Cr1I", "BT7IZee-aD8", "JQ621T_PN0s", "L7aRxqziN8w", "xGL5xy_YFyw", "U07SsCE6ZJA", "MR72FmMVffk", "C-a0jpFHizc", "ESJcH-bSONQ"
 ];
@@ -67,64 +68,8 @@ export default function HomeDashboard() {
   return (
     <div className="flex min-h-screen flex-col bg-fast-black text-fast-text pb-16 overflow-x-hidden">
       <Navbar />
-      {/* Hero Banner (Netflix Style) */}
-      <div className="relative min-h-[90vh] w-full bg-fast-black flex flex-col md:flex-row overflow-hidden pt-24 pr-8 pl-24 md:pr-16 md:pl-32">
-        {/* Full Width Background Video */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <iframe 
-            src={`https://www.youtube-nocookie.com/embed/${heroVideoId}?autoplay=1&mute=1&loop=1&playlist=${heroVideoId}&playsinline=1&enablejsapi=1`}
-            className="absolute inset-0 w-full h-[150%] -top-[25%] opacity-70 scale-125"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          />
-          {/* Netflix-style Gradients */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent pointer-events-none" />
-          <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none" />
-        </div>
-
-        {/* Left Content (Netflix Style) */}
-        <div className="w-full md:w-[50%] flex flex-col justify-center z-20 pt-24 pb-32 relative">
-          
-          {/* F Series Badge */}
-          <div className="flex items-center gap-2 mb-4">
-            <div className="flex items-center gap-1 text-[#E50914] font-bold tracking-[0.2em] text-xs">
-              <span className="text-2xl leading-none">F</span>
-              <span>SERIES</span>
-            </div>
-          </div>
-
-          {/* Title */}
-          <h1 className="text-6xl md:text-8xl font-black text-white mb-4 drop-shadow-2xl uppercase tracking-tight">
-            GLOBAL<br/>DOMINANCE
-          </h1>
-
-          {/* Top 10 Badge */}
-          <div className="flex items-center gap-2 mb-4 drop-shadow-md">
-             <div className="bg-[#E50914] text-white font-bold text-[10px] w-6 h-6 rounded-sm shadow-md flex flex-col items-center justify-center leading-none border border-white/20">
-                <span className="text-[6px] tracking-tighter">TOP</span>
-                <span>10</span>
-             </div>
-             <span className="text-white font-bold text-xl drop-shadow-md">#1 in TV Shows Today</span>
-          </div>
-          
-          <p className="max-w-xl text-lg text-white font-medium leading-normal mb-8 drop-shadow-xl line-clamp-3">
-            An exclusive look into the most breathtaking cinematic achievements of the year. Uncover the truth behind the curtain in this thrilling documentary series.
-          </p>
-
-          {/* Action Buttons */}
-          <div className="flex gap-4 items-center">
-            <Link href={`/watch/${heroVideoId}`}>
-              <Button className="bg-white hover:bg-white/80 text-black font-bold text-lg px-8 py-6 rounded-md transition-all shadow-xl">
-                <Play className="h-6 w-6 mr-2 fill-black" /> Play
-              </Button>
-            </Link>
-            
-            <Button variant="outline" className="bg-gray-500/60 hover:bg-gray-500/40 text-white font-bold text-lg px-8 py-6 rounded-md border-transparent transition-all backdrop-blur-md shadow-xl">
-              <Info className="h-6 w-6 mr-2" /> More Info
-            </Button>
-          </div>
-        </div>
-      </div>
+      {/* Hero Banner Rotator */}
+      <HeroBannerRotator />
 
       {/* Content Rows */}
       <div className="flex flex-col gap-12 -mt-32 relative z-30 px-8 pl-24 md:px-16 md:pl-32 mb-24">
