@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #000000;
+  --color-foreground: #FFFFFF;
+  --color-fast-black: #0E0E0E;
+  --color-fast-dark: #141416;
+  --color-fast-surface: #1E1E24;
+  --color-fast-red: #cc0000;
+  --color-fast-red-hover: #e60000;
+  --color-fast-text: #FFFFFF;
+  --color-fast-text-secondary: #9CA3AF;
+  --color-fast-success: #00D084;
+  --color-fast-warning: #FFB800;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --background: #000000;
+  --foreground: #FFFFFF;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Hide scrollbar ── */
+::-webkit-scrollbar { display: none; }
+* { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Cinematic grain ── */
+.landing-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* ── Ticker ── */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-strip       { animation: ticker 50s linear infinite; }
+.ticker-strip:hover { animation-play-state: paused; }
+
+/* ── Shimmer ── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.text-shimmer { background-size: 200% auto; animation: shimmer 4s linear infinite; }
+
+/* ── Pulse glow ── */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 30px rgba(220,38,38,0.15); }
+  50%       { box-shadow: 0 0 70px rgba(220,38,38,0.45); }
+}
+.pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+/* ── Float ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+.float       { animation: float  8s ease-in-out infinite; }
+.float-slow  { animation: float 14s ease-in-out infinite; }
+.float-fast  { animation: float  5s ease-in-out infinite; }
+
+/* ── Breathe (hero sphere) ── */
+@keyframes breathe {
+  0%, 100% { opacity: 0.12; transform: scale(1); }
+  50%       { opacity: 0.22; transform: scale(1.12); }
+}
+.breathe { animation: breathe 7s ease-in-out infinite; }
+
+/* ── Slow rotation ── */
+@keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.spin-slow         { animation: spin-slow  60s linear infinite; }
+.spin-slow-reverse { animation: spin-slow  80s linear infinite reverse; }
+
+/* ── Vignette ── */
+.vignette {
+  background: radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(0,0,0,0.8) 100%);
+}
+
+/* ── Light ray ── */
+@keyframes ray-sweep {
+  0%   { opacity: 0; transform: scaleX(0.8) rotate(-3deg); }
+  50%  { opacity: 0.5; }
+  100% { opacity: 0; transform: scaleX(1.2) rotate(3deg); }
+}
+.light-ray { animation: ray-sweep 10s ease-in-out infinite; }
+
+/* ── Glass card ── */
+.glass-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ── Glow divider ── */
+.divider-glow {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(220,38,38,0.5), rgba(251,146,60,0.4), transparent);
+}
+
+/* ── Scrollbar hide ── */
+.scrollbar-hide                  { scrollbar-width: none; -ms-overflow-style: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ── Carousel glow ── */
+@keyframes carousel-glow {
+  0%, 100% { box-shadow: 0 0 10px 2px rgba(255,255,255,0.08); }
+  50%       { box-shadow: 0 0 24px 6px rgba(255,255,255,0.22); }
+}
+.carousel-item:hover { animation: carousel-glow 2s infinite ease-in-out; }
+
+/* ── Tracking-in reveal ── */
+@keyframes tracking-in {
+  from { letter-spacing: 0.6em; opacity: 0; filter: blur(4px); }
+  to   { letter-spacing: normal; opacity: 1; filter: blur(0); }
+}
+.tracking-in { animation: tracking-in 1.4s cubic-bezier(0.22,1,0.36,1) forwards; }
+
+/* ── Dot blink (archive nodes) ── */
+@keyframes dot-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+.dot-blink { animation: dot-blink 2.5s ease-in-out infinite; }
+
+/* ── Bg gradient utility ── */
+.bg-dark-gradient { background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4)); }
