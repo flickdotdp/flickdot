@@ -188,10 +188,7 @@ export default function Home() {
         {/* ── Fixed navigation ── */}
         <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-16 lg:px-28 py-6">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 bg-red-600 rounded-xl flex items-center justify-center">
-              <Film className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-2xl font-black tracking-tighter text-white">FlickDot</span>
+            <span className="text-4xl font-black tracking-tighter text-white">FlickDot</span>
           </div>
           <div className="flex items-center gap-3">
             <Button
@@ -742,10 +739,7 @@ export default function Home() {
         className="fixed top-0 inset-x-0 z-[100] bg-black/80 backdrop-blur-2xl border-b border-white/[0.05] px-6 md:px-16 lg:px-28 py-4 flex items-center justify-between"
       >
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center">
-            <Film className="w-4 h-4 text-white" />
-          </div>
-          <span className="text-lg font-black tracking-tight">FlickDot</span>
+          <span className="text-2xl font-black tracking-tight">FlickDot</span>
         </div>
         <div className="flex items-center gap-3">
           <Button
