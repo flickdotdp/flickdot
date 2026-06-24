@@ -38,8 +38,8 @@ export default function SearchPage() {
       // If no results from DB yet, provide some mock suggestions so the UI can be previewed
       if (combined.length === 0) {
         combined = [
-          { id: '1', title: `${query} (Movie Match)`, type: 'Movie' },
-          { id: '2', title: `${query} (Series Match)`, type: 'Series' },
+          { id: '1', title: `${query} (Movie Match)`, type: 'Movie', poster_url: '' },
+          { id: '2', title: `${query} (Series Match)`, type: 'Series', poster_url: '' },
         ];
       }
       
