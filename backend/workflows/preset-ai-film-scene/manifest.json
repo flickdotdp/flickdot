@@ -1,0 +1,24 @@
+{
+    "id": "preset-ai-film-scene",
+    "name": "AI Film Scene Creator",
+    "description": "Generate complete cinematic scenes with character consistency, dramatic lighting, camera direction, environment design, and storyboard-ready frames.",
+    "category": "Cinematic Storytelling",
+    "tags": [
+        "Veo",
+        "Kling",
+        "Flux"
+    ],
+    "complexity": "Expert",
+    "estimated_runtime": 90,
+    "supported_models": [
+        "Veo",
+        "Kling",
+        "Flux"
+    ],
+    "is_featured": true,
+    "executions": 5420,
+    "success_rate": 92,
+    "average_time": 95,
+    "rating": 47,
+    "bookmarks": 1200
+}

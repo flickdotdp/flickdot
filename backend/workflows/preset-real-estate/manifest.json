@@ -1,0 +1,22 @@
+{
+    "id": "preset-real-estate",
+    "name": "Real Estate Showcase",
+    "description": "Produce luxury property visuals, architectural photography, lifestyle renders, and cinematic walkthrough keyframes.",
+    "category": "Image Generation",
+    "tags": [
+        "Flux",
+        "SDXL"
+    ],
+    "complexity": "Intermediate",
+    "estimated_runtime": 45,
+    "supported_models": [
+        "Flux",
+        "SDXL"
+    ],
+    "is_featured": false,
+    "executions": 18500,
+    "success_rate": 96,
+    "average_time": 46,
+    "rating": 45,
+    "bookmarks": 340
+}

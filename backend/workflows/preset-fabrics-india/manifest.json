@@ -1,0 +1,22 @@
+{
+    "id": "preset-fabrics-india",
+    "name": "Fabrics of India Storytelling",
+    "description": "Generate premium Indian textile storytelling campaigns combining heritage, craftsmanship, culture, fashion, and cinematic visual narratives.",
+    "category": "Cinematic Storytelling",
+    "tags": [
+        "Flux Pro",
+        "Veo"
+    ],
+    "complexity": "Advanced",
+    "estimated_runtime": 75,
+    "supported_models": [
+        "Flux Pro",
+        "Veo"
+    ],
+    "is_featured": true,
+    "executions": 4100,
+    "success_rate": 94,
+    "average_time": 72,
+    "rating": 50,
+    "bookmarks": 890
+}

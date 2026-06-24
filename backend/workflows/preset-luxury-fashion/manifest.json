@@ -1,0 +1,22 @@
+{
+    "id": "preset-luxury-fashion",
+    "name": "Luxury Fashion Campaign",
+    "description": "Generate high-end fashion editorials, magazine covers, runway visuals, brand campaigns, and luxury lifestyle photography.",
+    "category": "Fashion Campaigns",
+    "tags": [
+        "Flux Pro",
+        "SDXL"
+    ],
+    "complexity": "Advanced",
+    "estimated_runtime": 60,
+    "supported_models": [
+        "Flux Pro",
+        "SDXL"
+    ],
+    "is_featured": true,
+    "executions": 8930,
+    "success_rate": 95,
+    "average_time": 62,
+    "rating": 49,
+    "bookmarks": 850
+}

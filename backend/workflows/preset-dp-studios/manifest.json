@@ -1,0 +1,20 @@
+{
+    "id": "preset-dp-studios",
+    "name": "DP AI Studios Commercial Engine",
+    "description": "End-to-end advertising workflow designed for agencies and brands. Generates creative strategy, key visuals, campaign assets, video concepts, and platform-ready deliverables.",
+    "category": "Enterprise Production",
+    "tags": [
+        "Multiple"
+    ],
+    "complexity": "Expert",
+    "estimated_runtime": 180,
+    "supported_models": [
+        "Multiple"
+    ],
+    "is_featured": true,
+    "executions": 1500,
+    "success_rate": 90,
+    "average_time": 195,
+    "rating": 50,
+    "bookmarks": 950
+}

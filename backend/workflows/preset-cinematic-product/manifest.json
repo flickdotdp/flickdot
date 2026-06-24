@@ -1,0 +1,24 @@
+{
+    "id": "preset-cinematic-product",
+    "name": "Cinematic Product Commercial",
+    "description": "Create luxury product advertisements with studio lighting, cinematic camera movements, premium color grading, macro detail shots, and commercial-quality visuals.",
+    "category": "Product Photography",
+    "tags": [
+        "Flux Pro",
+        "Imagen",
+        "Veo"
+    ],
+    "complexity": "Intermediate",
+    "estimated_runtime": 45,
+    "supported_models": [
+        "Flux Pro",
+        "Imagen",
+        "Veo"
+    ],
+    "is_featured": true,
+    "executions": 12450,
+    "success_rate": 98,
+    "average_time": 44,
+    "rating": 48,
+    "bookmarks": 320
+}

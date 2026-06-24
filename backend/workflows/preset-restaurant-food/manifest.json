@@ -1,0 +1,20 @@
+{
+    "id": "preset-restaurant-food",
+    "name": "Restaurant Food Photography",
+    "description": "Generate premium food photography, menu visuals, delivery app images, restaurant branding content, and promotional campaigns.",
+    "category": "Product Photography",
+    "tags": [
+        "Flux Pro"
+    ],
+    "complexity": "Beginner",
+    "estimated_runtime": 25,
+    "supported_models": [
+        "Flux Pro"
+    ],
+    "is_featured": false,
+    "executions": 21000,
+    "success_rate": 99,
+    "average_time": 24,
+    "rating": 48,
+    "bookmarks": 210
+}

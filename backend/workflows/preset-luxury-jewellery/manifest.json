@@ -1,0 +1,20 @@
+{
+    "id": "preset-luxury-jewellery",
+    "name": "Luxury Jewellery Campaign",
+    "description": "Create premium jewellery advertisements with elegant lighting, macro shots, luxury styling, premium backgrounds, and fashion editorial aesthetics.",
+    "category": "Fashion Campaigns",
+    "tags": [
+        "Flux Pro"
+    ],
+    "complexity": "Intermediate",
+    "estimated_runtime": 40,
+    "supported_models": [
+        "Flux Pro"
+    ],
+    "is_featured": false,
+    "executions": 7800,
+    "success_rate": 97,
+    "average_time": 41,
+    "rating": 48,
+    "bookmarks": 420
+}

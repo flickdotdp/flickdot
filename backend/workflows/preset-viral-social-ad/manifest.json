@@ -1,0 +1,22 @@
+{
+    "id": "preset-viral-social-ad",
+    "name": "Viral Social Media Ad",
+    "description": "Create high-converting Instagram, Facebook, YouTube Shorts, and TikTok advertisements optimized for engagement and performance marketing.",
+    "category": "Social Media Ads",
+    "tags": [
+        "Flux",
+        "Imagen"
+    ],
+    "complexity": "Beginner",
+    "estimated_runtime": 30,
+    "supported_models": [
+        "Flux",
+        "Imagen"
+    ],
+    "is_featured": false,
+    "executions": 45200,
+    "success_rate": 99,
+    "average_time": 28,
+    "rating": 46,
+    "bookmarks": 450
+}

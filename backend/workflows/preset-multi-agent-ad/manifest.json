@@ -1,0 +1,20 @@
+{
+    "id": "preset-multi-agent-ad",
+    "name": "Multi-Agent Ad Production Pipeline",
+    "description": "Automatically generate concept \u2192 script \u2192 storyboard \u2192 images \u2192 video \u2192 ad copy \u2192 social assets through coordinated AI agents.",
+    "category": "Multi-Agent Automation",
+    "tags": [
+        "Multiple"
+    ],
+    "complexity": "Expert",
+    "estimated_runtime": 240,
+    "supported_models": [
+        "Multiple"
+    ],
+    "is_featured": true,
+    "executions": 2100,
+    "success_rate": 88,
+    "average_time": 255,
+    "rating": 49,
+    "bookmarks": 1800
+}

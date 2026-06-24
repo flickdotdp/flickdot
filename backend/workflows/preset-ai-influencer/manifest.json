@@ -1,0 +1,20 @@
+{
+    "id": "preset-ai-influencer",
+    "name": "AI Influencer Creator",
+    "description": "Generate virtual influencer content, lifestyle shoots, branded collaborations, social media assets, and marketing campaigns.",
+    "category": "Character Creation",
+    "tags": [
+        "Flux Pro"
+    ],
+    "complexity": "Advanced",
+    "estimated_runtime": 50,
+    "supported_models": [
+        "Flux Pro"
+    ],
+    "is_featured": true,
+    "executions": 56000,
+    "success_rate": 93,
+    "average_time": 52,
+    "rating": 47,
+    "bookmarks": 3100
+}

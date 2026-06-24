@@ -1,0 +1,20 @@
+{
+    "id": "preset-character-consistency",
+    "name": "Character Consistency Studio",
+    "description": "Create reusable characters with consistent facial features, wardrobe, poses, and environments across multiple generations.",
+    "category": "Character Creation",
+    "tags": [
+        "Flux Pro"
+    ],
+    "complexity": "Advanced",
+    "estimated_runtime": 60,
+    "supported_models": [
+        "Flux Pro"
+    ],
+    "is_featured": true,
+    "executions": 32000,
+    "success_rate": 91,
+    "average_time": 65,
+    "rating": 49,
+    "bookmarks": 2500
+}

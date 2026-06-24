@@ -1,0 +1,20 @@
+{
+    "id": "preset-movie-poster",
+    "name": "Movie Poster Generator",
+    "description": "Create blockbuster movie posters with cinematic composition, dramatic typography placement, key art styling, and premium visual storytelling.",
+    "category": "Cinematic Storytelling",
+    "tags": [
+        "Flux Pro"
+    ],
+    "complexity": "Intermediate",
+    "estimated_runtime": 35,
+    "supported_models": [
+        "Flux Pro"
+    ],
+    "is_featured": false,
+    "executions": 14200,
+    "success_rate": 98,
+    "average_time": 36,
+    "rating": 46,
+    "bookmarks": 550
+}
