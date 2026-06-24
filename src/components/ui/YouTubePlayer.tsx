@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
-import { Play, AlertCircle, Loader2 } from "lucide-react";
+import { Play, Pause, AlertCircle, Loader2, Volume2, VolumeX, Maximize } from "lucide-react";
 import { extractYouTubeId } from "@/lib/utils";
 
 // Add YT namespace to window
@@ -51,6 +51,9 @@ export function YouTubePlayer({
   
   const [playerState, setPlayerState] = useState<PlayerState>("LOADING");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [isMuted, setIsMuted] = useState(mute);
 
   const parsedVideoId = extractYouTubeId(videoId);
 
@@ -95,12 +98,13 @@ export function YouTubePlayer({
           playerVars: {
             autoplay: autoplay ? 1 : 0,
             mute: mute ? 1 : 0,
-            controls: controls ? 1 : 0,
+            controls: 0,
+            disablekb: 1,
             loop: loop ? 1 : 0,
             playlist: loop ? parsedVideoId : undefined,
             playsinline: 1,
             rel: 0,
-            modestbranding: 1,
+            modestbranding: 0,
             origin: typeof window !== "undefined" ? window.location.origin : undefined,
           },
           events: {
@@ -182,7 +186,71 @@ export function YouTubePlayer({
         playerRef.current = null;
       }
     };
-  }, [parsedVideoId, autoplay, mute, loop, controls, triggerFallback]);
+  }, [parsedVideoId, autoplay, mute, loop, triggerFallback]);
+
+  // Sync loop for current time
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (playerState === "PLAYING") {
+      interval = setInterval(() => {
+        if (playerRef.current && playerRef.current.getCurrentTime) {
+          setCurrentTime(playerRef.current.getCurrentTime());
+          setDuration(playerRef.current.getDuration());
+        }
+      }, 500);
+    }
+    return () => clearInterval(interval);
+  }, [playerState]);
+
+  const togglePlay = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (!playerRef.current) return;
+    if (playerState === "PLAYING") {
+      playerRef.current.pauseVideo();
+    } else {
+      playerRef.current.playVideo();
+    }
+  };
+
+  const toggleMute = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (!playerRef.current) return;
+    if (isMuted) {
+      playerRef.current.unMute();
+      setIsMuted(false);
+    } else {
+      playerRef.current.mute();
+      setIsMuted(true);
+    }
+  };
+
+  const toggleFullscreen = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (!containerRef.current) return;
+    const parent = containerRef.current.closest('.relative.bg-black.overflow-hidden');
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else if (parent) {
+      parent.requestFullscreen();
+    }
+  };
+
+  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    if (!playerRef.current || duration === 0) return;
+    const bounds = e.currentTarget.getBoundingClientRect();
+    const percent = (e.clientX - bounds.left) / bounds.width;
+    const newTime = percent * duration;
+    playerRef.current.seekTo(newTime, true);
+    setCurrentTime(newTime);
+  };
+  
+  const formatTime = (seconds: number) => {
+    if (!seconds || isNaN(seconds)) return "0:00";
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return `${m}:${s < 10 ? '0' : ''}${s}`;
+  };
 
   // Handle standard embed fallback failure via onLoad/onError isn't fully reliable for cross-origin iframes,
   // but we provide it as an intermediate layer.
@@ -246,7 +314,7 @@ export function YouTubePlayer({
 
   // Active Player Container
   return (
-    <div className={`relative bg-black overflow-hidden ${className}`}>
+    <div className={`relative bg-black overflow-hidden group ${className}`} onClick={togglePlay}>
       
       {/* Loading Skeleton */}
       {playerState === "LOADING" && (
@@ -264,10 +332,43 @@ export function YouTubePlayer({
 
       {/* The actual YouTube IFrame API will attach to this inner div */}
       <div 
-        className="absolute inset-0 w-full h-full pointer-events-auto z-10 transition-opacity duration-500"
+        className="absolute inset-0 w-full h-full pointer-events-none z-10 transition-opacity duration-500"
         style={{ opacity: playerState !== "LOADING" ? 1 : 0 }}
       >
         <div ref={containerRef} className="w-full h-full" />
+      </div>
+
+      {/* Custom Controls Overlay */}
+      <div className="absolute bottom-0 left-0 right-0 z-30 p-4 md:p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col gap-3 pointer-events-auto" onClick={(e) => e.stopPropagation()}>
+        {/* Progress Bar */}
+        <div 
+          className="w-full h-1.5 md:h-2 bg-white/20 rounded-full cursor-pointer relative group/progress"
+          onClick={handleSeek}
+        >
+          <div className="absolute left-0 top-0 h-full bg-white/40 rounded-full transition-all duration-300 group-hover/progress:h-3 -translate-y-[2px]" style={{ width: '100%' }} />
+          <div 
+            className="absolute left-0 top-0 h-full bg-green-500 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.8)] transition-all duration-300 group-hover/progress:h-3 -translate-y-[2px]"
+            style={{ width: `${duration > 0 ? (currentTime / duration) * 100 : 0}%` }}
+          />
+        </div>
+        
+        {/* Controls Row */}
+        <div className="flex items-center justify-between text-white mt-1">
+          <div className="flex items-center gap-4 md:gap-6">
+            <button onClick={togglePlay} className="hover:scale-110 transition-transform focus:outline-none">
+              {playerState === "PLAYING" ? <Pause className="w-5 h-5 md:w-6 md:h-6 fill-white" /> : <Play className="w-5 h-5 md:w-6 md:h-6 fill-white" />}
+            </button>
+            <button onClick={toggleMute} className="hover:scale-110 transition-transform focus:outline-none">
+              {isMuted ? <VolumeX className="w-5 h-5 md:w-6 md:h-6" /> : <Volume2 className="w-5 h-5 md:w-6 md:h-6" />}
+            </button>
+            <span className="text-xs md:text-sm font-medium opacity-80">
+              {formatTime(currentTime)} / {formatTime(duration)}
+            </span>
+          </div>
+          <button onClick={toggleFullscreen} className="hover:scale-110 transition-transform focus:outline-none">
+            <Maximize className="w-5 h-5 md:w-6 md:h-6" />
+          </button>
+        </div>
       </div>
       
     </div>
