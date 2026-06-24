@@ -1,7 +1,16 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Search, Home, ShoppingBag, Tv, Tag, UserSquare2 } from "lucide-react";
 
 export function Sidebar() {
+  const pathname = usePathname();
+
+  if (pathname === "/") {
+    return null;
+  }
+
   return (
     <div className="fixed top-0 left-0 h-screen w-20 hover:w-64 bg-transparent hover:bg-black/95 transition-all duration-300 flex flex-col items-start py-6 px-6 z-50 pointer-events-auto group overflow-hidden border-r border-transparent hover:border-white/10">
       
